@@ -3,3 +3,4 @@
 /mysql/
 *.iml
 *.iws
+/node-20/node_modules/
