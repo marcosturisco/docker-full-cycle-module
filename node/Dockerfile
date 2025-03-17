@@ -4,7 +4,6 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install express --save && \
-    npm install mysql --save
+RUN npm install express --save
 
 EXPOSE 3000
