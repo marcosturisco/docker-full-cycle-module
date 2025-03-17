@@ -21,17 +21,22 @@ connection.connect(err => {
     console.log('Connected to MySQL!');
 });
 
-app.get('/', (req, res) => {
-    const sql = `INSERT INTO people(name) VALUES('Turisco')`;
-    connection.query(sql, (err, result) => {
-        if (err) {
-            console.error('Error to insert data:', err);
-            res.status(500).send('<h1>Error Server</h1>');
-            return;
-        }
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.post('/add-people', (req, res) => {
+    const { name } = req.body;
+    if (!name) {
+        return res.status(400).send('<h1>Name is required</h1>');
+    }
+    const sql = `INSERT INTO people(name) VALUES(?)`;
+    connection.query(sql, [name], (err, result) => {
+        if (err) {
+            console.error('Insert Error:', err);
+            return res.status(500).send('<h1>Server Error</h1>');
+        }
         console.log('People Added Successfully!');
-        res.send('<h1>People Added Successfully</h1>');
+        res.send('<h1>People Added Successfully!</h1>');
     });
 });
 
