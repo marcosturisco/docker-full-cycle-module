@@ -4,3 +4,4 @@
 *.iml
 *.iws
 /node-20/node_modules/
+/challenge/node_modules/

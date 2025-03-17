@@ -18,8 +18,10 @@ docker run -dit --rm --name node -p 3000:3000 dockermactur/node:dev
 
 # Linking a folder to a container spot in order to sync all the files
  docker run -it --rm -p 3000:3000 -v ${pwd}/:/usr/src/app node:20 bash
+ docker run -it --rm -p 8080:3000 -v ${PWD}/:/usr/src/app node:23 bash
 
 # To create a node project using some dependencies
+# Access the usr/src/app folder and execute those commands above:
 # npm init
 # npm install express --save
-# npm install mysql --save
+# npm install mysql2 --save
