@@ -2,14 +2,14 @@ services:
 
   app:
     build:
-      context: node
+      context: node-20
     image: dockermactur/node:dev
     container_name: app
     entrypoint: sh -c "npm install && npm run dev"
     networks:
       - node-network
     volumes:
-      - ./node:/usr/src/app
+      - ./node-20:/usr/src/app
     tty: true
     ports:
       - "3000:3000"
